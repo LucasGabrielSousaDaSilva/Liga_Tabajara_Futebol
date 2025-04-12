@@ -40,4 +40,11 @@ namespace Liga_Tabajara_Futebol.Models
             GolsSofridos = 0;
         }
     }
+
+    public class TimeDBContext : DbContext
+    {
+        public DbSet<Time> Times { get; set; }
+        public DbSet<Jogador> Jogadores { get; set; }
+        public DbSet<ComissaoTecnica> ComissaoTecnica { get; set; }
+    }
 }

@@ -38,4 +38,10 @@ namespace Liga_Tabajara_Futebol.Models
         public ICollection<EstatisticaPartida> Estatisticas { get; set; }
 
     }
+
+    public class JogadorDBContext : DbContext
+    {
+        public DbSet<Jogador> Jogadores { get; set; }
+        public DbSet<Time> Times { get; set; }
+    }
 }
