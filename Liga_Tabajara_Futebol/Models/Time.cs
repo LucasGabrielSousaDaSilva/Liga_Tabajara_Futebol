@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -10,8 +11,9 @@ namespace Liga_Tabajara_Futebol.Models
 	{
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Status { get; set; }
-        public Boolean CoresUniformes { get; set; }
+        public bool Status { get; set; }
+        public string CorUniformesPrimaria { get; set; }
+        public string CorUniformesSecundaria { get; set; }
         public DateTime DataFundacao { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
@@ -22,6 +24,12 @@ namespace Liga_Tabajara_Futebol.Models
         public int Derrotas { get; set; }
         public int GolsMarcados { get; set; }
         public int GolsSofridos { get; set; }
+
+        public int LigaId { get; set; }
+        public Liga Liga { get; set; }
+
+        public ICollection<Jogador> Jogadores { get; set; }
+        public ICollection<ComissaoTecnica> ComissaoTecnica { get; set; }
 
         public Time()
         {
