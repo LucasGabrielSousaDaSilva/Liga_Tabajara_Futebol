@@ -127,7 +127,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ComissaoTecnicaController.cs" />
+    <Compile Include="Controllers\EstatisticaPartidaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JogadorController.cs" />
+    <Compile Include="Controllers\LigaController.cs" />
+    <Compile Include="Controllers\PartidaController.cs" />
+    <Compile Include="Controllers\TimeController.cs" />
     <Compile Include="DAL\LigaTabajaraFutebol.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -141,6 +147,7 @@
     <Compile Include="Models\EstatisticaPartida.cs" />
     <Compile Include="Models\Jogador.cs" />
     <Compile Include="Models\Liga.cs" />
+    <Compile Include="Models\LigaHomeViewModel.cs" />
     <Compile Include="Models\Partida.cs" />
     <Compile Include="Models\Time.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -196,6 +203,37 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Time\Create.cshtml" />
+    <Content Include="Views\Time\Delete.cshtml" />
+    <Content Include="Views\Time\Details.cshtml" />
+    <Content Include="Views\Time\Edit.cshtml" />
+    <Content Include="Views\Time\Index.cshtml" />
+    <Content Include="Views\Jogador\Create.cshtml" />
+    <Content Include="Views\Jogador\Delete.cshtml" />
+    <Content Include="Views\Jogador\Details.cshtml" />
+    <Content Include="Views\Jogador\Edit.cshtml" />
+    <Content Include="Views\Jogador\Index.cshtml" />
+    <Content Include="Views\ComissaoTecnica\Create.cshtml" />
+    <Content Include="Views\ComissaoTecnica\Delete.cshtml" />
+    <Content Include="Views\ComissaoTecnica\Details.cshtml" />
+    <Content Include="Views\ComissaoTecnica\Edit.cshtml" />
+    <Content Include="Views\ComissaoTecnica\Index.cshtml" />
+    <Content Include="Views\Partida\Create.cshtml" />
+    <Content Include="Views\Partida\Delete.cshtml" />
+    <Content Include="Views\Partida\Details.cshtml" />
+    <Content Include="Views\Partida\Edit.cshtml" />
+    <Content Include="Views\Partida\Index.cshtml" />
+    <Content Include="Views\EstatisticaPartida\Create.cshtml" />
+    <Content Include="Views\EstatisticaPartida\Delete.cshtml" />
+    <Content Include="Views\EstatisticaPartida\Details.cshtml" />
+    <Content Include="Views\EstatisticaPartida\Edit.cshtml" />
+    <Content Include="Views\EstatisticaPartida\Index.cshtml" />
+    <Content Include="Views\Liga\Create.cshtml" />
+    <Content Include="Views\Liga\Delete.cshtml" />
+    <Content Include="Views\Liga\Details.cshtml" />
+    <Content Include="Views\Liga\Edit.cshtml" />
+    <Content Include="Views\Liga\Index.cshtml" />
+    <Content Include="Views\Liga\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

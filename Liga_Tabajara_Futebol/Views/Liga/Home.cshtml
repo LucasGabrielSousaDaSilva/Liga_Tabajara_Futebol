@@ -1,0 +1,14 @@
+﻿@model Liga_Tabajara_Futebol.Models.LigaHomeViewModel
+
+<h1>@Model.Apresentacao</h1>
+
+<h2>Times Participantes</h2>
+<ul>
+    @foreach (var time in Model.Times)
+    {
+        <li>@time.Nome - @time.Cidade, @time.Estado</li>
+    }
+</ul>
+
+<h2>Status da Liga</h2>
+<p>@Model.StatusLiga</p>

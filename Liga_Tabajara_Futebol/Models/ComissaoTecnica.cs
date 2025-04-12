@@ -15,6 +15,7 @@ namespace Liga_Tabajara_Futebol.Models
         AnalistaDeDesempenho,
         TreinadorDeGoleiros,
         Fisioterapeuta,
+        Auxiliar
     }
 
     public class ComissaoTecnica

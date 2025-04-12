@@ -11,5 +11,14 @@ namespace Liga_Tabajara_Futebol.Models
         public bool Status { get; set; }
 
         public ICollection<Time> Times { get; set; }
+
+        public static bool LigaEstaApta(List<Time> times)
+        {
+            return times.Count == 20 &&
+                   times.All(time => time.Jogadores.Count >= 30 &&
+                                     time.ComissaoTecnica.Count >= 5 &&
+                                     time.ComissaoTecnica.Select(c => c.Cargo).Distinct().Count() >= 5);
+        }
+
     }
 }

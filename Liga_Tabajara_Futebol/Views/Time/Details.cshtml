@@ -1,0 +1,138 @@
+﻿@model Liga_Tabajara_Futebol.Models.Time
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Time</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Liga.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Liga.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorUniformesPrimaria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorUniformesPrimaria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorUniformesSecundaria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorUniformesSecundaria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataFundacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataFundacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estadio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estadio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CapacidadeEstagio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapacidadeEstagio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vitorias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vitorias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empates)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empates)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Derrotas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Derrotas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GolsMarcados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GolsMarcados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GolsSofridos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GolsSofridos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

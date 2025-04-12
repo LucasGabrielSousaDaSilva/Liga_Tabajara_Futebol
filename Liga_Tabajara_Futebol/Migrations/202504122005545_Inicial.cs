@@ -58,7 +58,7 @@
                         DataFundacao = c.DateTime(nullable: false),
                         Cidade = c.String(),
                         Estado = c.String(),
-                        Estagio = c.String(),
+                        Estadio = c.String(),
                         CapacidadeEstagio = c.Int(nullable: false),
                         Vitorias = c.Int(nullable: false),
                         Empates = c.Int(nullable: false),
@@ -105,14 +105,14 @@
                         Estadio = c.String(),
                         Resultado = c.Int(nullable: false),
                         Rodada = c.Int(nullable: false),
-                        timeCasaId_Id = c.Int(),
-                        timeForaId_Id = c.Int(),
+                        TimeCasaId_Id = c.Int(),
+                        TimeForaId_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Time", t => t.timeCasaId_Id)
-                .ForeignKey("dbo.Time", t => t.timeForaId_Id)
-                .Index(t => t.timeCasaId_Id)
-                .Index(t => t.timeForaId_Id);
+                .ForeignKey("dbo.Time", t => t.TimeCasaId_Id)
+                .ForeignKey("dbo.Time", t => t.TimeForaId_Id)
+                .Index(t => t.TimeCasaId_Id)
+                .Index(t => t.TimeForaId_Id);
             
         }
         

@@ -18,8 +18,8 @@ namespace Liga_Tabajara_Futebol.Models
     {
         public int Id { get; set; }
         public DateTime Data { get; set; }
-        public Time timeCasaId { get; set; }
-        public Time timeForaId { get; set; }
+        public Time TimeCasaId { get; set; }
+        public Time TimeForaId { get; set; }
         public int GolsTimeCasa { get; set; }
         public int GolsTimeFora { get; set; }
         public string Estadio { get; set; }

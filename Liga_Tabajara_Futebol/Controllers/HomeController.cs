@@ -1,13 +1,19 @@
-﻿using System;
+﻿using Liga_Tabajara_Futebol.DAL;
+using Liga_Tabajara_Futebol.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Liga_Tabajara_Futebol.Controllers
 {
     public class HomeController : Controller
     {
+
+        private LigaTabajaraFutebol db = new LigaTabajaraFutebol();
+
         public ActionResult Index()
         {
             return View();

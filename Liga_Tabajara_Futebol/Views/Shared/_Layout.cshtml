@@ -18,9 +18,17 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Página Inicial", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Página Inicial", "Home", "Liga", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Sobre", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contato", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Ligas", "Index", "Liga", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Jogadores", "Index", "Jogador", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Times", "Index", "Time", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Partidas", "Index", "Partida", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Artilheiros", "Index", "Artilheiro", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Classificação", "Index", "Classificacao", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Tabela", "Index", "Tabela", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Estatísticas", "Index", "Estatistica", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
