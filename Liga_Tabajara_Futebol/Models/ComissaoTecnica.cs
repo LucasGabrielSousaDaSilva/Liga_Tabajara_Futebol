@@ -17,12 +17,6 @@ namespace Liga_Tabajara_Futebol.Models
         Fisioterapeuta,
     }
 
-    public class ComissaoTecnicaDBContext : DbContext
-    {
-        public DbSet<ComissaoTecnica> ComissaoTecnica { get; set; }
-        public DbSet<Time> Times { get; set; }
-    }
-
     public class ComissaoTecnica
 	{
         public int Id { get; set; }

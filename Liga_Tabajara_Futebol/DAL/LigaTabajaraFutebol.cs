@@ -12,6 +12,7 @@ namespace Liga_Tabajara_Futebol.DAL
         public LigaTabajaraFutebol() : base("LigaTabajaraFutebol")
         {
         }
+        public DbSet<Models.Liga> Ligas { get; set; }
         public DbSet<Models.ComissaoTecnica> ComissaoTecnica { get; set; }
         public DbSet<Models.Time> Times { get; set; }
         public DbSet<Models.Jogador> Jogadores { get; set; }
