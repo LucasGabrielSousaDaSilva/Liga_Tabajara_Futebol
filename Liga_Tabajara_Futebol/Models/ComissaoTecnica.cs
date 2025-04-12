@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,12 @@ namespace Liga_Tabajara_Futebol.Models
         AnalistaDeDesempenho,
         TreinadorDeGoleiros,
         Fisioterapeuta,
+    }
+
+    public class ComissaoTecnicaDBContext : DbContext
+    {
+        public DbSet<ComissaoTecnica> ComissaoTecnica { get; set; }
+        public DbSet<Time> Times { get; set; }
     }
 
     public class ComissaoTecnica
