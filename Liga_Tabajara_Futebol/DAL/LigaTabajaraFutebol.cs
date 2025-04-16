@@ -9,6 +9,12 @@ namespace Liga_Tabajara_Futebol.DAL
 {
     public class LigaTabajaraFutebol : DbContext
     {
+        public LigaTabajaraFutebol() : base("LigaTabajaraFutebol")
+        {
+            Database.SetInitializer<LigaTabajaraFutebol>(new DropCreateDatabaseIfModelChanges<LigaTabajaraFutebol>());
+            //Database.SetInitializer<LigaTabajaraFutebol>(null);
+        }
+
         public DbSet<Models.Liga> Ligas { get; set; }
         public DbSet<Models.ComissaoTecnica> ComissaoTecnica { get; set; }
         public DbSet<Models.Time> Times { get; set; }
@@ -16,10 +22,6 @@ namespace Liga_Tabajara_Futebol.DAL
         public DbSet<Models.Partida> Partidas { get; set; }
         public DbSet<Models.EstatisticaPartida> EstatisticasPartida { get; set; }
 
-        public LigaTabajaraFutebol() : base("Liga")
-        {
-            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
-        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
