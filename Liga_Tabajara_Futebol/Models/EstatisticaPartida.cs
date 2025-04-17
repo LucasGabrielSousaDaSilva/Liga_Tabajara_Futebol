@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,7 @@ namespace Liga_Tabajara_Futebol.Models
     public class EstatisticaPartida
     {
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int PartidaId { get; set; }
         public Partida Partida { get; set; }
@@ -39,5 +41,7 @@ namespace Liga_Tabajara_Futebol.Models
             CartoesAmarelos = 0;
             CartoesVermelhos = 0;
         }
+
+
     }
 }

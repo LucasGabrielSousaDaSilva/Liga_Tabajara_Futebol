@@ -17,7 +17,7 @@ namespace Liga_Tabajara_Futebol.Models
         public DateTime DataFundacao { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
-        public string Estadio { get; set; }
+        public string EstadioTime { get; set; }
         public int CapacidadeEstagio { get; set; }
         public int Vitorias { get; set; }
         public int Empates { get; set; }

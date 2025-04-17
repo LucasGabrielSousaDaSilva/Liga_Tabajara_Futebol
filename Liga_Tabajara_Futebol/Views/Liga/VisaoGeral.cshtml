@@ -1,0 +1,106 @@
+﻿@model Liga_Tabajara_Futebol.Models.LigaHomeViewModel
+
+@{
+    ViewBag.Title = "Visão Geral";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid bg-dark text-white py-4">
+    <h1 class="display-5 fw-bold">Liga Tabajara de Futebol</h1>
+    <p class="lead">Rodada @Model.Rodada de 38</p>
+
+    <ul class="nav nav-pills mb-4">
+        <li class="nav-item"><a class="nav-link active bg-success" href="#">Visão geral</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Partidas</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Classificação</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Estatísticas</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Jogadores</a></li>
+    </ul>
+
+    <div class="row">
+        <!-- Coluna Partidas -->
+        <div class="col-md-8">
+            <div class="card bg-secondary text-white mb-4">
+                <div class="card-header">Partidas - Rodada @Model.Rodada</div>
+                <div class="card-body">
+                    @foreach (var jogo in Model.Jogos)
+                    {
+                        <div class="d-flex justify-content-between border-bottom py-2">
+                            <div>@jogo.TimeCasa</div>
+                            <div>
+                                <strong>@jogo.GolsCasa</strong>
+                                <span class="mx-2">x</span>
+                                <strong>@jogo.GolsFora</strong>
+                            </div>
+                            <div>@jogo.TimeFora</div>
+                            <div>
+                                @if (jogo.Finalizado)
+                                {
+                                    <span class="text-warning">FIM</span>
+                                }
+                                else if (!string.IsNullOrEmpty(jogo.Horario))
+                                {
+                                    <span>@jogo.Horario</span>
+                                }
+                                else if (jogo.Minuto.HasValue)
+                                {
+                                    <span class="text-success">Ao vivo @jogo.Minuto' </span>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Coluna Classificação -->
+        <div class="col-md-4">
+            <div class="card bg-secondary text-white">
+                <div class="card-header">Classificação</div>
+                <div class="card-body">
+                    <table class="table table-sm table-dark table-bordered mb-0">
+                        <thead>
+                            <tr>
+                                <th>Clube</th>
+                                <th>PJ</th>
+                                <th>VIT</th>
+                                <th>E</th>
+                                <th>DER</th>
+                                <th>SG</th>
+                                <th>Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var time in Model.Classificacao)
+                            {
+                                <tr>
+                                    <td>@time.NomeTime</td>
+                                    <td>@time.Vitorias</td>
+                                    <td>@time.Empates</td>
+                                    <td>@time.Derrotas</td>
+                                    <td>@time.SaldoGols</td>
+                                    <td>@time.Pontos</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #121212;
+    }
+
+    .card {
+        border-radius: 15px;
+    }
+
+    .nav-pills .nav-link.active {
+        border-radius: 30px;
+        font-weight: bold;
+    }
+</style>

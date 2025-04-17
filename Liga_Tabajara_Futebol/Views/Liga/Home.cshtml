@@ -1,14 +1,69 @@
 ﻿@model Liga_Tabajara_Futebol.Models.LigaHomeViewModel
+    
 
-<h1>@Model.Apresentacao</h1>
+@{
+    ViewBag.Title = "Liga Tabajara";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<h2>Times Participantes</h2>
-<ul>
-    @foreach (var time in Model.Times)
-    {
-        <li>@time.Nome - @time.Cidade, @time.Estado</li>
-    }
-</ul>
+<div class="container-fluid bg-dark text-white p-4">
+    <h1 class="mb-4">Brasileirão Tabajara Série A</h1>
+    <h5>Rodada @ViewBag.RodadaAtual de 38</h5>
 
-<h2>Status da Liga</h2>
-<p>@Model.StatusLiga</p>
+    <nav class="nav nav-pills nav-fill bg-secondary rounded mb-4">
+        <a class="nav-link active" href="#">Visão geral</a>
+        <a class="nav-link text-white" href="#">Partidas</a>
+        <a class="nav-link text-white" href="#">Classificação</a>
+        <a class="nav-link text-white" href="#">Estatísticas</a>
+        <a class="nav-link text-white" href="#">Jogadores</a>
+    </nav>
+
+    <div class="row">
+        <!-- Partidas -->
+        <div class="col-md-8">
+            <h4>Partidas - Rodada @ViewBag.RodadaAtual</h4>
+            <div class="list-group">
+                @foreach (var partida in Model.Partidas)
+                {
+                    <div class="list-group-item bg-dark text-white border-secondary">
+                        <strong>@partida.TimeCasaId.Nome</strong> @partida.GolsTimeCasa
+                        x
+                        @partida.GolsTimeFora <strong>@partida.TimeForaId.Nome</strong>
+                        <span class="float-end text-success">Ao vivo</span>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Classificação -->
+        <div class="col-md-4">
+            <h4>Classificação</h4>
+            <table class="table table-dark table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Clube</th>
+                        <th>PJ</th>
+                        <th>VIT</th>
+                        <th>E</th>
+                        <th>DER</th>
+                        <th>SG</th>
+                        <th>Pts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Classificacao.OrderByDescending(c => c.Pontos))
+                    {
+                        <tr>
+                            <td>@item.NomeTime</td>
+                            <td>@item.Vitorias</td>
+                            <td>@item.Empates</td>
+                            <td>@item.Derrotas</td>
+                            <td>@item.SaldoGols</td>
+                            <td><strong>@item.Pontos</strong></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

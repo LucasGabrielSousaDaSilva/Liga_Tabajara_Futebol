@@ -29,7 +29,7 @@
                 DataFundacao = DateTime.Now,
                 Cidade = "Cidade A",
                 Estado = "Estado A",
-                Estadio = "Estádio A",
+                EstadioTime = "Estádio A",
                 CapacidadeEstagio = 50000,
                 LigaId = liga.Id
             };
@@ -42,7 +42,7 @@
                 DataFundacao = DateTime.Now,
                 Cidade = "Cidade B",
                 Estado = "Estado B",
-                Estadio = "Estádio B",
+                EstadioTime = "Estádio B",
                 CapacidadeEstagio = 60000,
                 LigaId = liga.Id
             };
@@ -54,7 +54,7 @@
                 DataFundacao = DateTime.Now,
                 Cidade = "Cidade C",
                 Estado = "Estado C",
-                Estadio = "Estádio C",
+                EstadioTime = "Estádio C",
                 CapacidadeEstagio = 70000,
                 LigaId = liga.Id
             };
@@ -66,7 +66,7 @@
                 DataFundacao = DateTime.Now,
                 Cidade = "Cidade D",
                 Estado = "Estado D",
-                Estadio = "Estádio D",
+                EstadioTime = "Estádio D",
                 CapacidadeEstagio = 80000,
                 LigaId = liga.Id
             };
@@ -78,7 +78,7 @@
                 DataFundacao = DateTime.Now,
                 Cidade = "Cidade E",
                 Estado = "Estado E",
-                Estadio = "Estádio E",
+                EstadioTime = "Estádio E",
                 CapacidadeEstagio = 90000,
                 LigaId = liga.Id
             };

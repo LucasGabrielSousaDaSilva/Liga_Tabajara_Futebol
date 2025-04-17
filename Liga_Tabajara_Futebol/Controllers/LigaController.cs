@@ -21,126 +21,65 @@ namespace Liga_Tabajara_Futebol.Controllers
             return View(db.Ligas.ToList());
         }
 
-        public ActionResult Home()
+        public ActionResult Liga()
         {
-            // Obter a liga principal (assumindo que há apenas uma liga no banco de dados)
-            var liga = db.Ligas.Include(l => l.Times.Select(t => t.Jogadores))
-                               .Include(l => l.Times.Select(t => t.ComissaoTecnica))
-                               .FirstOrDefault();
+            var times = GerarTimesFake();
+            var partidasRodada = GerarPartidasFake(times);
+            //var classificacao = CalcularClassificacao(times, partidasRodada);
 
-            if (liga == null)
+            ViewBag.RodadaAtual = 4;
+
+            var model = new LigaHomeViewModel
             {
-                return HttpNotFound("Liga não encontrada.");
-            }
-
-            // Verificar se a liga está apta
-            bool ligaApta = Liga.LigaEstaApta(liga.Times.ToList());
-
-            // Criar um ViewModel para passar os dados para a View
-            var viewModel = new LigaHomeViewModel
-            {
-                Apresentacao = "Bem-vindo à Liga Tabajara Futebol!",
-                Times = liga.Times.ToList(),
-                StatusLiga = ligaApta ? "Apta para iniciar o campeonato" : "Não apta para iniciar o campeonato"
+                Times = times,
+                Partidas = partidasRodada,
+                //Classificacao = classificacao
             };
 
-            return View(viewModel);
+            return View(model);
         }
 
-
-        // GET: Liga/Details/5
-        public ActionResult Details(int? id)
+        private List<Time> GerarTimesFake()
         {
-            if (id == null)
+            var times = new List<Time>();
+            for (int i = 1; i <= 20; i++)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var time = new Time
+                {
+                    Id = i,
+                    Nome = "Time " + i,
+                    Jogadores = new List<Jogador>(),
+                    ComissaoTecnica = new List<ComissaoTecnica>()
+                };
+                for (int j = 1; j <= 30; j++)
+                {
+                    time.Jogadores.Add(new Jogador { Id = j, Nome = "Jogador " + j });
+                }
+                for (int k = 1; k <= 5; k++)
+                {
+                    time.ComissaoTecnica.Add(new ComissaoTecnica { Id = k});
+                }
+                times.Add(time);
             }
-            Liga liga = db.Ligas.Find(id);
-            if (liga == null)
-            {
-                return HttpNotFound();
-            }
-            return View(liga);
+            return times;
         }
 
-        // GET: Liga/Create
-        public ActionResult Create()
+        private List<Partida> GerarPartidasFake(List<Time> times)
         {
-            return View();
-        }
-
-        // POST: Liga/Create
-        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
-        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Status")] Liga liga)
-        {
-            if (ModelState.IsValid)
+            var partidas = new List<Partida>();
+            for (int i = 0; i < times.Count; i++)
             {
-                db.Ligas.Add(liga);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                for (int j = i + 1; j < times.Count; j++)
+                {
+                    partidas.Add(new Partida
+                    {
+                        TimeCasaId = times[i],
+                        TimeForaId = times[j],
+                        Data = DateTime.Now.AddDays(i + j)
+                    });
+                }
             }
-
-            return View(liga);
-        }
-
-        // GET: Liga/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Liga liga = db.Ligas.Find(id);
-            if (liga == null)
-            {
-                return HttpNotFound();
-            }
-            return View(liga);
-        }
-
-        // POST: Liga/Edit/5
-        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
-        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Status")] Liga liga)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(liga).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(liga);
-        }
-
-        // GET: Liga/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Liga liga = db.Ligas.Find(id);
-            if (liga == null)
-            {
-                return HttpNotFound();
-            }
-            return View(liga);
-        }
-
-        // POST: Liga/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Liga liga = db.Ligas.Find(id);
-            db.Ligas.Remove(liga);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return partidas;
         }
 
         private bool ValidarStatusLiga(List<Time> times)
@@ -164,6 +103,39 @@ namespace Liga_Tabajara_Futebol.Controllers
 
             return true;
         }
+
+        public ActionResult Home()
+        {
+            // MOCK: Simulando dados de jogos
+            var jogosRodada = new List<JogoViewModel>
+            {
+                new JogoViewModel { TimeCasa = "Internacional", GolsCasa = 0, TimeFora = "Palmeiras", GolsFora = 1, Minuto = 72 },
+                new JogoViewModel { TimeCasa = "Corinthians", GolsCasa = 0, TimeFora = "Fluminense", GolsFora = 1, Minuto = 74 },
+                new JogoViewModel { TimeCasa = "Sport Recife", GolsCasa = 0, TimeFora = "Bragantino", GolsFora = 1, Finalizado = true },
+                new JogoViewModel { TimeCasa = "EC Vitória", GolsCasa = 0, TimeFora = "Fortaleza", Horario = "21:30" },
+                new JogoViewModel { TimeCasa = "Santos", GolsCasa = 0, TimeFora = "Atlético-MG", Horario = "21:30" },
+                new JogoViewModel { TimeCasa = "Flamengo", GolsCasa = 0, TimeFora = "Juventude", Horario = "21:30" }
+            };
+
+            // MOCK: Classificação
+            var classificacao = new List<ClassificacaoItem>
+            {
+                new ClassificacaoItem { NomeTime = "Internacional", Vitorias = 2, Empates = 1, Derrotas = 1, SaldoGols = 3, Pontos = 7 },
+                new ClassificacaoItem { NomeTime = "Palmeiras", Vitorias = 3, Empates = 0, Derrotas = 1, SaldoGols = 5, Pontos = 9 },
+                new ClassificacaoItem { NomeTime = "Corinthians", Vitorias = 1, Empates = 2, Derrotas = 1, SaldoGols = -1, Pontos = 5 },
+                new ClassificacaoItem { NomeTime = "Fluminense", Vitorias = 2, Empates = 0, Derrotas = 2, SaldoGols = -2, Pontos = 6 }
+            };
+
+            var model = new LigaHomeViewModel
+            {
+                Rodada = 4,
+                Jogos = jogosRodada,
+                Classificacao = classificacao
+            };
+
+            return View(model);
+        }    
+
 
         protected override void Dispose(bool disposing)
         {

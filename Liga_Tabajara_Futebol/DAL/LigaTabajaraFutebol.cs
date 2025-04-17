@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Liga_Tabajara_Futebol.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -9,7 +10,7 @@ namespace Liga_Tabajara_Futebol.DAL
 {
     public class LigaTabajaraFutebol : DbContext
     {
-        public LigaTabajaraFutebol() : base("LigaTabajaraFutebol")
+        public LigaTabajaraFutebol() : base("LigaTabajaraFutebolContext")
         {
             Database.SetInitializer<LigaTabajaraFutebol>(new DropCreateDatabaseIfModelChanges<LigaTabajaraFutebol>());
             //Database.SetInitializer<LigaTabajaraFutebol>(null);
